@@ -12,6 +12,7 @@ import java.util.Date;
 
 import computermentors.org.childdevelopment.R;
 import computermentors.org.childdevelopment.model.Calculate;
+import computermentors.org.childdevelopment.ui.MilestoneActivity;
 
 
 public class MainActivity extends ActionBarActivity {
