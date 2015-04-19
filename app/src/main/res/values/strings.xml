@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Child Development</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_milestone">MilestoneActivity</string>
+    <integer name="years">0</integer>
+    <integer name="months">0</integer>
+</resources>
