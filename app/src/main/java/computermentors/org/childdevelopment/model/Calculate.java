@@ -62,6 +62,9 @@ public class Calculate {
 
 
         int ageMonths = currentMonth - month;
+        if (ageMonths < 0){
+            ageMonths = ageMonths * -1;
+        }
 
         return ageMonths;
     }

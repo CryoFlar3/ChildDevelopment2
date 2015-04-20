@@ -8,9 +8,10 @@ public class Page {
     private String mHeader;
     private String mText;
 
-    public Page(int imageId, String text){
+    public Page(int imageId, String text1, String text2){
         mImageId = imageId;
-        mText = text;
+        mText = text2;
+        mHeader = text1;
     }
 
     public int getImageId() {
