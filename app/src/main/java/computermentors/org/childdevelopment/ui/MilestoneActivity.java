@@ -1,29 +1,32 @@
 package computermentors.org.childdevelopment.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import computermentors.org.childdevelopment.R;
-import computermentors.org.childdevelopment.model.Milestones;
+import computermentors.org.childdevelopment.model.Headers;
+import computermentors.org.childdevelopment.model.Milestone;
 import computermentors.org.childdevelopment.model.Page;
 
-public class MilestoneActivity extends ActionBarActivity {
+public class MilestoneActivity extends Activity {
 
     private int mYear;
     private int mMonths;
-    private ImageView mImageView;
     private TextView mHeaderView;
     private TextView mTextView;
+    private TextView mProgressTextView;
+    private TextView mCautionTextView;
     private Page mCurrentPage;
-    private Button mReturnButton;
-    private Milestones mMilestones = new Milestones();
+    private Headers mHeaders = new Headers();
+    private ListView lv1 = null;
+    private ListView lv2 = null;
+    private Milestone mMilestone = new Milestone();
 
 
     @Override
@@ -31,10 +34,22 @@ public class MilestoneActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_milestone);
 
-        mImageView = (ImageView)findViewById(R.id.titleImageView);
+        String[] array1 = {"a", "b", "c", "d", "e", "f"};
+        String[] array2 = {"red", "blue", "gold", "white", "black", "orange", "silver"};
+        String[] array3 = {"r", "s", "t", "u", "v", "w", "x"};
+
+        String[][] arrays = {array1, array2};
+
         mHeaderView = (TextView)findViewById(R.id.headerTextView);
         mTextView = (TextView)findViewById(R.id.milestoneTextView);
-        mReturnButton = (Button)findViewById(R.id.returnButton);
+        mProgressTextView = (TextView)findViewById(R.id.progressTextView);
+        mCautionTextView = (TextView)findViewById(R.id.cautionTextView);
+
+        lv1 = (ListView) findViewById (R.id.list1);
+        lv2 = (ListView) findViewById (R.id.list2);
+
+        lv1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrays[0]));
+        lv2.setAdapter(new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arrays[1]));
 
 
 
@@ -74,29 +89,28 @@ public class MilestoneActivity extends ActionBarActivity {
         }
 
 
-            mReturnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startMenu();
-            }
-        });
 
 
         Toast.makeText(MilestoneActivity.this, "Years: " + mYear + ", " + "Months: " + mMonths, Toast.LENGTH_LONG).show();
     }
 
     private void loadPage(int choice){
-        mCurrentPage = mMilestones.getPage(choice);
+        mCurrentPage = mHeaders.getPage(choice);
 
         Drawable drawable = getResources().getDrawable(mCurrentPage.getImageId());
-        mImageView.setImageDrawable(drawable);
+        //mImageView.setImageDrawable(drawable);
 
-        String pageText = mCurrentPage.getText();
+        String pageSub1 = mCurrentPage.getSubHeader1();
+        String pageSub2 = mCurrentPage.getSubHeader2();
         String pageHeader = mCurrentPage.getHeader();
+        String pageProgress = mCurrentPage.getProgress();
         //Add name if placeholder is included
-        pageText = String.format(pageText);
+        pageSub1 = String.format(pageSub1);
         mHeaderView.setText(pageHeader);
-        mTextView.setText(pageText);
+        mTextView.setText(pageSub1);
+        mProgressTextView.setText(pageProgress);
+        mCautionTextView.setText(pageSub2);
+
 
 
     }

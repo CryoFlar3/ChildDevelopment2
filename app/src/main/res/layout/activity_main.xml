@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".MainActivity"
-                android:background="#ff86B4CC">
+                android:background="@drawable/bg_gradient">
 
     <ScrollView
         android:layout_width="wrap_content"
