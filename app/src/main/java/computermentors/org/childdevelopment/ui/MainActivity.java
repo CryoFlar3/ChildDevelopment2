@@ -40,24 +40,22 @@ public class MainActivity extends ActionBarActivity {
                 Date trueDate = mCalculate.Calculate(birth, premature);
                 int years = mCalculate.getYear(trueDate);
                 int months = mCalculate.getMonth(trueDate);
-
-                //SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                //String formattedDate = sdf.format(trueDate);
-
-
-                //Toast.makeText(MainActivity.this, formattedDate, Toast.LENGTH_LONG).show();
-                //Toast.makeText(MainActivity.this, "Years: " + years + ", " + "Months: " + months, Toast.LENGTH_LONG).show();
+                boolean early = false;
+                if (premature > 0){
+                    early = true;
+                }
 
 
-                startMilestone(years, months);
+                startMilestone(years, months, early);
             }
         });
     }
 
-    private void startMilestone(int years, int months) {
+    private void startMilestone(int years, int months, boolean premature) {
         Intent intent = new Intent(this, MilestoneActivity.class);
         intent.putExtra("years", years);
         intent.putExtra("months", months);
+        intent.putExtra("perfect", premature);
         startActivity(intent);
     }
 

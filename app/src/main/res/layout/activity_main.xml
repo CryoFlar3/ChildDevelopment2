@@ -5,25 +5,18 @@
                 tools:context=".MainActivity"
                 android:background="@drawable/bg_gradient">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-    </ScrollView>
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:weightSum="100"
-        android:padding="20dp">
+        android:id="@+id/linearLayout"
+        android:background="#80ffffff"
+        android:layout_margin="8dp"
+        android:padding="8dp">
 
         <TextView
             android:text="Please select your childs birth date below"
@@ -31,7 +24,6 @@
             android:layout_height="wrap_content"
             android:textSize="21sp"
             android:paddingBottom="10dp"
-            android:layout_marginBottom="20dp"
             android:id="@+id/dobTextView"/>
 
         <DatePicker
@@ -39,7 +31,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/birthDatePicker"
             android:calendarViewShown="false"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -65,5 +57,15 @@
             android:id="@+id/startButton"
             />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@mipmap/cmglogo"
+        android:paddingLeft="16dp"/>
 
 </RelativeLayout>

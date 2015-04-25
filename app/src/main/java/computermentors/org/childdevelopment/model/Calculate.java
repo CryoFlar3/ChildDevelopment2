@@ -34,14 +34,19 @@ public class Calculate {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
 
         // parse Current Date
         Calendar today = Calendar.getInstance();
         today.setTime(now);
         int currentYear = today.get(Calendar.YEAR);
+        int currentMonth = today.get(Calendar.MONTH);
 
 
         int ageYears = currentYear - year;
+        if(currentMonth < month){
+            ageYears--;
+        }
 
         return ageYears;
     }
@@ -62,8 +67,8 @@ public class Calculate {
 
 
         int ageMonths = currentMonth - month;
-        if (ageMonths < 0){
-            ageMonths = ageMonths * -1;
+        if (currentMonth < month){
+            ageMonths--;
         }
 
         return ageMonths;

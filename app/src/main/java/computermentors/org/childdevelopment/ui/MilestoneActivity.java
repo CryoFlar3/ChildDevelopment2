@@ -1,6 +1,8 @@
 package computermentors.org.childdevelopment.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ public class MilestoneActivity extends Activity {
 
     private int mYear;
     private int mMonths;
+    private boolean mPremature;
     private TextView mHeaderView;
     private TextView mTextView;
     private TextView mProgressTextView;
@@ -34,11 +37,6 @@ public class MilestoneActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_milestone);
 
-        String[] array1 = {"a", "b", "c", "d", "e", "f"};
-        String[] array2 = {"red", "blue", "gold", "white", "black", "orange", "silver"};
-        String[] array3 = {"r", "s", "t", "u", "v", "w", "x"};
-
-        String[][] arrays = {array1, array2};
 
         mHeaderView = (TextView)findViewById(R.id.headerTextView);
         mTextView = (TextView)findViewById(R.id.milestoneTextView);
@@ -48,17 +46,28 @@ public class MilestoneActivity extends Activity {
         lv1 = (ListView) findViewById (R.id.list1);
         lv2 = (ListView) findViewById (R.id.list2);
 
-        lv1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrays[0]));
-        lv2.setAdapter(new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arrays[1]));
+
 
 
 
         Intent intent = getIntent();
         mYear = intent.getIntExtra("years", 0);
         mMonths = intent.getIntExtra("months", 0);
+        mPremature = getIntent().getExtras().getBoolean("perfect");
+
 
         if(mYear > 5){
-            loadPage(9);
+            //loadPage(9);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Oops!");
+            builder.setMessage("It looks like your child's age is out side the scope of this app. Please Try again!");
+            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    startMenu();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
         else if (mYear > 4) {
             loadPage(8);
@@ -84,8 +93,23 @@ public class MilestoneActivity extends Activity {
         else if(mYear == 0 && mMonths > 3) {
             loadPage(1);
         }
-        else {
+        else if (mYear == 0 && mMonths >= 0){
             loadPage(0);
+        }
+        else if (mYear == 0 && mMonths >= 0 && mPremature == true){
+            loadPage(0);
+        }
+        else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Oops!");
+            builder.setMessage("It looks like your child was born in the future! Please try again!");
+            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    startMenu();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
 
@@ -96,6 +120,8 @@ public class MilestoneActivity extends Activity {
 
     private void loadPage(int choice){
         mCurrentPage = mHeaders.getPage(choice);
+        String[] milestone = mMilestone.getMilestone(choice);
+        String[] caution = mMilestone.getCaution(choice);
 
         Drawable drawable = getResources().getDrawable(mCurrentPage.getImageId());
         //mImageView.setImageDrawable(drawable);
@@ -110,6 +136,8 @@ public class MilestoneActivity extends Activity {
         mTextView.setText(pageSub1);
         mProgressTextView.setText(pageProgress);
         mCautionTextView.setText(pageSub2);
+        lv1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, milestone));
+        lv2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, caution));
 
 
 
