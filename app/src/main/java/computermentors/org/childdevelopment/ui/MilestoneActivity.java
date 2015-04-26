@@ -96,7 +96,7 @@ public class MilestoneActivity extends Activity {
         else if (mYear == 0 && mMonths >= 0){
             loadPage(0);
         }
-        else if (mYear == 0 && mMonths >= 0 && mPremature == true){
+        else if (mYear == 0 && mMonths >= 0 || mPremature == true){
             loadPage(0);
         }
         else {
