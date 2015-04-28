@@ -151,9 +151,10 @@ public class MilestoneActivity extends Activity {
             mMilestoneText.setText(builder.toString());
         }
 
+        StringBuilder builder2 = new StringBuilder();
         for (String s : caution) {
-            builder.append("\n" + s + "\n");
-            mCautionTextView.setText(builder.toString());
+            builder2.append("\n" + s + "\n");
+            mCautionTextView.setText(builder2.toString());
         }
 
 
