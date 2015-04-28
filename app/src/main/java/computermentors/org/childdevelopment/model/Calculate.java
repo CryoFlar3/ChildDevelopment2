@@ -31,47 +31,32 @@ public class Calculate {
         Date now = new Date();
 
         // Parse Birth Date
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-
-        // parse Current Date
+        Calendar dob = Calendar.getInstance();
+        dob.setTime(date);
         Calendar today = Calendar.getInstance();
-        today.setTime(now);
-        int currentYear = today.get(Calendar.YEAR);
-        int currentMonth = today.get(Calendar.MONTH);
-
-
-        int ageYears = currentYear - year;
-        if(currentMonth < month){
-            ageYears--;
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        if (today.get(Calendar.MONTH) < dob.get(Calendar.MONTH)) {
+            age--;
+        } else if (today.get(Calendar.MONTH) == dob.get(Calendar.MONTH)
+                && today.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH)) {
+            age--;
         }
 
-        return ageYears;
+        return age;
     }
 
     public int getMonth(Date date){
 
-        Date now = new Date();
-
-        // Parse Birth Date
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int month = cal.get(Calendar.MONTH);
-
-        // parse Current Date
+        Calendar dob = Calendar.getInstance();
+        dob.setTime(date);
         Calendar today = Calendar.getInstance();
-        today.setTime(now);
-        int currentMonth = today.get(Calendar.MONTH);
-
-
-        int ageMonths = currentMonth - month;
-        if (currentMonth < month){
-            ageMonths--;
+        int age = today.get(Calendar.MONTH) - dob.get(Calendar.MONTH);
+        if (age < 0){
+            //age++;
+            age = age + 12;
         }
 
-        return ageMonths;
+        return age;
     }
 }
 

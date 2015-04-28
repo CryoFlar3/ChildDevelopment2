@@ -123,7 +123,7 @@ public class MilestoneActivity extends Activity {
 
 
 
-        Toast.makeText(MilestoneActivity.this, "Years: " + mYear + ", " + "Months: " + mMonths, Toast.LENGTH_LONG).show();
+        //Toast.makeText(MilestoneActivity.this, "Years: " + mYear + ", " + "Months: " + mMonths, Toast.LENGTH_LONG).show();
     }
 
     private void loadPage(int choice){
