@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,9 @@ public class MilestoneActivity extends Activity {
     private ListView lv1 = null;
     private ListView lv2 = null;
     private Milestone mMilestone = new Milestone();
+    private TextView mMilestoneText;
+    private TextView mCautionHeaderTextView;
+    private Button mBackButton;
 
 
     @Override
@@ -39,16 +44,19 @@ public class MilestoneActivity extends Activity {
 
 
         mHeaderView = (TextView)findViewById(R.id.headerTextView);
-        mTextView = (TextView)findViewById(R.id.milestoneTextView);
+        mTextView = (TextView)findViewById(R.id.milestoneHeaderTextView);
         mProgressTextView = (TextView)findViewById(R.id.progressTextView);
+        mCautionHeaderTextView = (TextView)findViewById(R.id.cautionHeaderTextView);
         mCautionTextView = (TextView)findViewById(R.id.cautionTextView);
+        mMilestoneText = (TextView)findViewById(R.id.milestoneTextView);
+        mBackButton = (Button)findViewById(R.id.backButton);
 
-        lv1 = (ListView) findViewById (R.id.list1);
-        lv2 = (ListView) findViewById (R.id.list2);
-
-
-
-
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startMenu();
+            }
+        });
 
         Intent intent = getIntent();
         mYear = intent.getIntExtra("years", 0);
@@ -135,9 +143,18 @@ public class MilestoneActivity extends Activity {
         mHeaderView.setText(pageHeader);
         mTextView.setText(pageSub1);
         mProgressTextView.setText(pageProgress);
-        mCautionTextView.setText(pageSub2);
-        lv1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, milestone));
-        lv2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, caution));
+        mCautionHeaderTextView.setText(pageSub2);
+
+        StringBuilder builder = new StringBuilder();
+        for (String s : milestone) {
+            builder.append("\n" + s + "\n");
+            mMilestoneText.setText(builder.toString());
+        }
+
+        for (String s : caution) {
+            builder.append("\n" + s + "\n");
+            mCautionTextView.setText(builder.toString());
+        }
 
 
 

@@ -6,85 +6,106 @@
                 android:background="@drawable/bg_gradient">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollView2">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:weightSum="20"
+            android:background="#80ffffff"
+            android:layout_margin="16dp"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/headerTextView"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="42sp"
+                android:layout_weight="5"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="   "
+                android:id="@+id/milestoneHeaderTextView"
+                android:layout_below="@+id/headerTextView"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="3"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textSize="21sp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/milestoneTextView"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/milestoneHeaderTextView"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="   "
+                android:id="@+id/progressTextView"
+                android:layout_below="@+id/milestoneTextView"
+                android:paddingTop="8dp"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="   "
+                android:id="@+id/cautionHeaderTextView"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/progressTextView"
+                android:layout_weight="2"
+                android:background="#ffcc0000"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:layout_marginBottom="1dp"
+                android:textSize="21sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cautionTextView"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffcc0000"
+                android:layout_below="@+id/cautionHeaderTextView"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="14sp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:id="@+id/backButton"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:weightSum="20"
-        android:background="#80ffffff"
-        android:layout_margin="16dp"
-        android:padding="8dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/headerTextView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:textSize="21sp"
-            android:layout_weight="5"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="   "
-            android:id="@+id/milestoneTextView"
-            android:layout_below="@+id/headerTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_weight="3"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"/>
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:id="@+id/list1"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/milestoneTextView"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="   "
-            android:id="@+id/progressTextView"
-            android:layout_below="@id/list1"
-            android:paddingTop="8dp"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="   "
-            android:id="@+id/cautionTextView"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/progressTextView"
-            android:layout_weight="2"
-            android:background="#ffcc0000"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:layout_marginBottom="1dp"/>
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="180dp"
-            android:id="@+id/list2"
-            android:layout_below="@+id/cautionTextView"
-            android:layout_weight="5"
-            android:background="#ffcc0000"/>
-    </LinearLayout>
 
 </RelativeLayout>

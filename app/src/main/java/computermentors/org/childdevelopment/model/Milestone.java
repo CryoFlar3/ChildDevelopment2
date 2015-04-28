@@ -27,7 +27,7 @@ public class Milestone {
                 "Making noises to show displeasure and satisfaction",
                 "Picking up small objects with his / her thumb and finger (pincer grasp)",
                 "Show some anxiety when your or another caregiver leaves" };
-        String[] milestones3 = {"Saying 2 – 3 words besides 'mama' and 'dada'",
+        String[] milestones3 = {"Saying 2 or 3 words besides 'mama' and 'dada'",
                 "Trying to imitate familiar words",
                 "Looking for and finding hidden objects",
                 "Sitting without assistance",
@@ -37,7 +37,7 @@ public class Milestone {
         String[] milestones4 = {"Walking without help",
                 "Holding objects / toys while walking",
                 "Turning pages in a book",
-                "Using 10 – 20 different words",
+                "Using 10 to 20 different words",
                 "Understanding the word 'no'",
                 "Waving goodbye",
                 "Playing games like Pat-A-Cake",

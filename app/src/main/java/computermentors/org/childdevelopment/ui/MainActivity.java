@@ -35,7 +35,12 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 DatePicker birth = mBirthDatePicker;
-                int premature = Integer.parseInt(mPrematureEditText.getText().toString());
+                String value = mPrematureEditText.getText().toString();
+                if(value.equals("")){
+                    value = "0";
+                }
+
+                int premature = Integer.parseInt(value);
 
                 Date trueDate = mCalculate.Calculate(birth, premature);
                 int years = mCalculate.getYear(trueDate);
